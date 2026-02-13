@@ -1,0 +1,192 @@
+:root{
+  --ink:#f7f7f7;
+  --muted:rgba(247,247,247,.7);
+  --line:rgba(247,247,247,.16);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: radial-gradient(ellipse at bottom, #090909, #000 60%);
+  color:var(--ink);
+  overflow:hidden;
+  font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+#sparkles{position:fixed; inset:0; z-index:0}
+
+/* screens */
+.screen,.scene{
+  position:fixed; inset:0;
+  display:grid; place-items:center;
+  z-index:2;
+  opacity:0; pointer-events:none;
+  transition:.55s ease;
+}
+.screen.is-active{opacity:1; pointer-events:auto}
+body.step3 .scene{opacity:1; pointer-events:auto}
+
+.box{
+  width:min(520px, 92vw);
+  text-align:center;
+  padding:22px 16px;
+}
+.tinyline{
+  color:var(--muted);
+  letter-spacing:.26em;
+  margin-bottom:12px;
+}
+.big{
+  font-weight:900;
+  letter-spacing:-.02em;
+  line-height:1.12;
+  font-size: clamp(22px, 5.8vw, 40px);
+  margin-bottom:18px;
+}
+.pill{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color:var(--ink);
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight:900;
+  cursor:pointer;
+  backdrop-filter: blur(10px);
+}
+.pill:active{transform:scale(.98)}
+
+.glow{
+  text-shadow: 0 0 10px rgba(255,255,255,.22), 0 0 26px rgba(255,255,255,.12);
+}
+
+/* scene top */
+.top{
+  position:absolute;
+  top: 9vh;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  opacity:0;
+  transform: translateY(6px);
+  transition: .8s ease .2s;
+}
+body.step3 .top{opacity:1; transform:translateY(0)}
+.love{
+  letter-spacing:.22em;
+  font-weight:900;
+  text-transform:uppercase;
+  font-size: clamp(14px, 3.6vw, 22px);
+  color: rgba(255,255,255,.88);
+}
+.down{
+  font-size: 20px;
+  color: rgba(255,255,255,.7);
+  animation: bob 1.2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* bouquet bottom */
+.bottom{
+  position:absolute;
+  bottom: 2vh;
+  width:100%;
+  display:grid;
+  place-items:end center;
+  gap:12px;
+}
+
+.bouquet{
+  width:min(340px, 92vw);
+  height:auto;
+  filter: drop-shadow(0 18px 70px rgba(0,0,0,.7));
+  transform-origin: bottom center;
+  animation: sway 6s ease-in-out infinite;
+  opacity:0;
+  transform: translateY(22px);
+  transition: .9s ease .35s;
+}
+body.bloom .bouquet{opacity:1; transform:translateY(0)}
+@keyframes sway{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(0) rotate(1deg)}}
+
+/* monochrome bouquet */
+.wrap{fill:rgba(255,255,255,.06); stroke:rgba(255,255,255,.22); stroke-width:2.2}
+.wrap2{fill:none; stroke:rgba(255,255,255,.18); stroke-width:2; stroke-linecap:round}
+
+.stem{
+  fill:none;
+  stroke: rgba(255,255,255,.75);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+.leaf{
+  fill: rgba(255,255,255,.10);
+  stroke: rgba(255,255,255,.35);
+  stroke-width: 1.6;
+  opacity:0;
+  transform-origin:center;
+}
+.core{fill:rgba(255,255,255,.86)}
+.petal{
+  fill: rgba(255,255,255,.10);
+  stroke: rgba(255,255,255,.42);
+  stroke-width: 1.5;
+}
+.bloom{opacity:0; transform:scale(.25); transform-origin:center}
+
+/* message card */
+.cardMsg{
+  width:min(520px, 92vw);
+  padding:12px 14px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  opacity:0;
+  transform: translateY(10px);
+  transition: .8s ease 1.35s;
+}
+body.bloom .cardMsg{opacity:1; transform:translateY(0)}
+.msg{
+  font-weight:900;
+  font-size: clamp(14px, 3.7vw, 18px);
+  line-height:1.35;
+  min-height:2.1em;
+}
+.from{
+  margin-top:8px;
+  color:var(--muted);
+  letter-spacing:.10em;
+  font-size: 12px;
+  text-transform:lowercase;
+}
+
+/* bloom sequence */
+body.bloom .stem{ animation: draw 1.6s ease forwards; }
+body.bloom .s2{ animation-delay:.10s }
+body.bloom .s3{ animation-delay:.18s }
+body.bloom .s4{ animation-delay:.26s }
+body.bloom .s5{ animation-delay:.34s }
+@keyframes draw{to{stroke-dashoffset:0}}
+
+body.bloom .leaf{ animation: leafIn .8s ease forwards; animation-delay:1.05s; }
+body.bloom .l2{ animation-delay:1.15s }
+body.bloom .l3{ animation-delay:1.25s }
+body.bloom .l4{ animation-delay:1.35s }
+@keyframes leafIn{to{opacity:1; transform:scale(1)}}
+
+body.bloom .bloom{ animation: pop 1s cubic-bezier(.16,.84,.26,1) forwards; animation-delay:1.25s; }
+body.bloom .b2{ animation-delay:1.38s }
+body.bloom .b3{ animation-delay:1.52s }
+body.bloom .b4{ animation-delay:1.66s }
+body.bloom .b5{ animation-delay:1.80s }
+@keyframes pop{
+  0%{opacity:0; transform:scale(.25)}
+  60%{opacity:1; transform:scale(1.06)}
+  100%{opacity:1; transform:scale(1)}
+       }
