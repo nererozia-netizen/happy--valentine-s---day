@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Daddy</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <canvas id="sparkles"></canvas>
+
+  <section class="screen is-active" data-step="1">
+    <div class="box">
+      <div class="tinyline">••••••••••••••••••••••</div>
+      <div class="big">hi daddy,<br>i have to say something.</div>
+      <button class="pill" data-next>Get Started</button>
+    </div>
+  </section>
+
+  <section class="screen" data-step="2">
+    <div class="box">
+      <div class="big glow">i love you daddy</div>
+      <button class="pill" data-next>Open</button>
+    </div>
+  </section>
+
+  <section class="scene" data-step="3" aria-live="polite">
+    <div class="top">
+      <div class="love glow">I LOVE U</div>
+      <div class="down">↓</div>
+    </div>
+
+    <div class="bottom">
+      <!-- ORIGINAL bouquet (iba ang shapes/placement) -->
+      <svg class="bouquet" viewBox="0 0 360 430" aria-hidden="true">
+        <!-- wrapper -->
+        <path class="wrap" d="M110 404 C150 350, 210 350, 250 404 L180 424 Z"/>
+        <path class="wrap2" d="M120 402 C155 365, 205 365, 240 402" />
+
+        <!-- stems -->
+        <path class="stem s1" d="M180 385 C165 332, 140 300, 125 270 C110 240, 122 210, 148 190" />
+        <path class="stem s2" d="M180 385 C195 332, 220 300, 235 270 C250 240, 238 210, 212 190" />
+        <path class="stem s3" d="M180 388 C180 330, 176 300, 176 265 C176 225, 190 200, 180 168" />
+        <path class="stem s4" d="M175 388 C150 345, 118 320, 98 295 C78 270, 82 235, 108 215" />
+        <path class="stem s5" d="M185 388 C210 345, 242 320, 262 295 C282 270, 278 235, 252 215" />
+
+        <!-- leaves -->
+        <path class="leaf l1" d="M140 285 C118 280, 112 305, 134 316 C154 325, 163 300, 140 285 Z"/>
+        <path class="leaf l2" d="M220 285 C242 280, 248 305, 226 316 C206 325, 197 300, 220 285 Z"/>
+        <path class="leaf l3" d="M106 250 C88 254, 88 276, 106 279 C124 283, 127 258, 106 250 Z"/>
+        <path class="leaf l4" d="M254 250 C272 254, 272 276, 254 279 C236 283, 233 258, 254 250 Z"/>
+
+        <!-- blooms (different sizes + placement vs earlier) -->
+        <g class="bloom b1" transform="translate(150 185)">
+          <circle class="core" cx="0" cy="0" r="5"/>
+          <path class="petal" d="M0 -20 C9 -15 11 -6 0 -4 C-11 -6 -9 -15 0 -20 Z"/>
+          <path class="petal" d="M20 0 C15 9 6 11 4 0 C6 -11 15 -9 20 0 Z"/>
+          <path class="petal" d="M0 20 C-9 15 -11 6 0 4 C11 6 9 15 0 20 Z"/>
+          <path class="petal" d="M-20 0 C-15 -9 -6 -11 -4 0 C-6 11 -15 9 -20 0 Z"/>
+        </g>
+
+        <g class="bloom b2" transform="translate(210 187)">
+          <circle class="core" cx="0" cy="0" r="5"/>
+          <path class="petal" d="M0 -20 C9 -15 11 -6 0 -4 C-11 -6 -9 -15 0 -20 Z"/>
+          <path class="petal" d="M20 0 C15 9 6 11 4 0 C6 -11 15 -9 20 0 Z"/>
+          <path class="petal" d="M0 20 C-9 15 -11 6 0 4 C11 6 9 15 0 20 Z"/>
+          <path class="petal" d="M-20 0 C-15 -9 -6 -11 -4 0 C-6 11 -15 9 -20 0 Z"/>
+        </g>
+
+        <g class="bloom b3" transform="translate(180 165)">
+          <circle class="core" cx="0" cy="0" r="6"/>
+          <path class="petal" d="M0 -24 C11 -18 13 -6 0 -4 C-13 -6 -11 -18 0 -24 Z"/>
+          <path class="petal" d="M24 0 C18 11 6 13 4 0 C6 -13 18 -11 24 0 Z"/>
+          <path class="petal" d="M0 24 C-11 18 -13 6 0 4 C13 6 11 18 0 24 Z"/>
+          <path class="petal" d="M-24 0 C-18 -11 -6 -13 -4 0 C-6 13 -18 11 -24 0 Z"/>
+        </g>
+
+        <g class="bloom b4" transform="translate(112 210)">
+          <circle class="core" cx="0" cy="0" r="4.5"/>
+          <path class="petal" d="M0 -17 C7 -12 9 -6 0 -4 C-9 -6 -7 -12 0 -17 Z"/>
+          <path class="petal" d="M17 0 C12 7 6 9 4 0 C6 -9 12 -7 17 0 Z"/>
+          <path class="petal" d="M0 17 C-7 12 -9 6 0 4 C9 6 7 12 0 17 Z"/>
+          <path class="petal" d="M-17 0 C-12 -7 -6 -9 -4 0 C-6 9 -12 7 -17 0 Z"/>
+        </g>
+
+        <g class="bloom b5" transform="translate(248 210)">
+          <circle class="core" cx="0" cy="0" r="4.5"/>
+          <path class="petal" d="M0 -17 C7 -12 9 -6 0 -4 C-9 -6 -7 -12 0 -17 Z"/>
+          <path class="petal" d="M17 0 C12 7 6 9 4 0 C6 -9 12 -7 17 0 Z"/>
+          <path class="petal" d="M0 17 C-7 12 -9 6 0 4 C9 6 7 12 0 17 Z"/>
+          <path class="petal" d="M-17 0 C-12 -7 -6 -9 -4 0 C-6 9 -12 7 -17 0 Z"/>
+        </g>
+      </svg>
+
+      <div class="cardMsg">
+        <div class="msg glow" id="typed"></div>
+        <div class="from">— from franco</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
